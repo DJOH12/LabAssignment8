@@ -38,9 +38,11 @@ void mergeSort(int pData[], int l, int r)
 		//merge section
 		int n1 = m-l +1;
 		int n2 = r-m;
+		void *sz = &pData[0];
 
-		int L[n1], R[n2];
-		 // temp arrays
+		int *L = Alloc(n1 * sizeof(int));
+		int *R = Alloc(n2 * sizeof(int));
+
 		// copy data into temp arrays
 		for(int i = 0; i < n1; i++) L[i] = pData[l + i];
 		for(int j = 0; j < n2; j++) R[j] = pData[m + 1 + j];
@@ -69,6 +71,8 @@ void mergeSort(int pData[], int l, int r)
 			j++;
 			current++;
 		}
+		DeAlloc(L);
+		DeAlloc(R);
 	}
 }
 
